@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         BUILD_NAME = "jenkins-${env.JOB_NAME}-${env.BUILD_NUMBER}"
-        LT_USERNAME = "vaneetb"
-        LT_ACCESS_KEY = "PQ2AhuxqqOWAfvzfJlvPaOqusS7YKqfwFJR6DoWY2vsA8CvTzC"
+        LT_USERNAME = 'vaneetb'
+        LT_ACCESS_KEY = 'PQ2AhuxqqOWAfvzfJlvPaOqusS7YKqfwFJR6DoWY2vsA8CvTzC'
         LT_BUILD_NAME = "${BUILD_NAME}"
     }
     stages {
