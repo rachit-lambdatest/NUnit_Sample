@@ -35,7 +35,6 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh '/usr/local/bin/dotnet tool install --global playwright-cli'
                 sh 'playwright install'
             }
         }
