@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Restore Dependencies') {
             steps {
-                sh '/usr/local/bin/dotnet restore'
+                sh '/usr/local/bin/dotnet restore TestProject1.sln'
             }
         }
         stage('Build') {
             steps {
-                sh '/usr/local/bin/dotnet build --configuration Release'
+                sh '/usr/local/bin/dotnet build TestProject1.sln--configuration Release'
             }
         }
         stage('Install Dependencies') {
@@ -31,7 +31,7 @@ pipeline {
         stage('Test') {
             steps {
                 withEnv(["LT_USERNAME=${env.LT_USERNAME}", "LT_ACCESS_KEY=${env.LT_ACCESS_KEY}", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
-                    sh '/usr/local/bin/dotnet test'
+                    sh '/usr/local/bin/dotnet test TestProject1.sln'
                 }
             }
         }
