@@ -50,15 +50,6 @@ pipeline {
     post {
         always {
             lambdaTestReportPublisher 'automation'
-            publishHTML(target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'TestResults/',
-                reportFiles: 'TestLog.html, ExtentReports/API/Report.html, ExtentReports/UI/Report.html, Lighthouse-Reports/LH_Report.html',
-                reportName: 'Execution Report',
-                reportTitles: 'OverAll Report, API Report, UI Report, LightHouse Report'
-            ])
         }
     }
 }
