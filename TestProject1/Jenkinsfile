@@ -14,24 +14,24 @@ pipeline {
         }
         stage('Restore Dependencies') {
             steps {
-                sh 'cd TestProject1 && /usr/local/bin/dotnet restore'
+                sh '/usr/local/bin/dotnet restore'
             }
         }
         stage('Build') {
             steps {
-                sh 'cd TestProject1 && /usr/local/bin/dotnet build --configuration Release'
+                sh '/usr/local/bin/dotnet build --configuration Release'
             }
         }
         stage('Install Dependencies') {
             steps {
-                sh 'cd TestProject1 && /usr/local/bin/dotnet tool install --global playwright-cli'
-                sh 'cd TestProject1 && playwright install'
+                sh '/usr/local/bin/dotnet tool install --global playwright-cli'
+                sh 'playwright install'
             }
         }
         stage('Test') {
             steps {
                 withEnv(["LT_USERNAME=${env.LT_USERNAME}", "LT_ACCESS_KEY=${env.LT_ACCESS_KEY}", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
-                    sh 'cd TestProject1 && /usr/local/bin/dotnet test'
+                    sh '/usr/local/bin/dotnet test'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: 'TestProject1/TestResults/',
+                reportDir: 'TestResults/',
                 reportFiles: 'TestLog.html, ExtentReports/API/Report.html, ExtentReports/UI/Report.html, Lighthouse-Reports/LH_Report.html',
                 reportName: 'Execution Report',
                 reportTitles: 'OverAll Report, API Report, UI Report, LightHouse Report'
