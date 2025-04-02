@@ -21,16 +21,16 @@ public class LambdaTestSetup
         string accessKey = Environment.GetEnvironmentVariable("LT_ACCESS_KEY") ?? "YOUR_LAMBDATEST_ACCESS_KEY";
 
         string testName = TestContext.CurrentContext.Test.MethodName;
-        string buildName = Environment.GetEnvironmentVariable("LT_BUILD_NAME") ?? "YOUR_LAMBDATEST_ACCESS_KEY";
+       // string buildName = Environment.GetEnvironmentVariable("LT_BUILD_NAME") ?? "YOUR_LAMBDATEST_ACCESS_KEY";
 
         var capabilities = new Dictionary<string, object?>
         {
-            { "browserName", "pw-firefox" },
+            { "browserName", "Chrome" },
             { "browserVersion", "latest" },
             { "LT:Options", new Dictionary<string, string?>
                 {
                     { "name", testName },
-                    { "build", buildName },
+                    { "build", "Build_Name" },
                     { "platform", "Windows 10" },
                     { "user", user },
                     { "accessKey", accessKey }
