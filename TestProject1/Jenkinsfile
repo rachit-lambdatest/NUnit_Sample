@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Restore Dependencies') {
             steps {
-                sh '/usr/local/bin/dotnet restore TestProject1.sln'
+               sh '/usr/local/bin/dotnet restore ../TestProject1.sln'
             }
         }
         stage('Build') {
