@@ -1,8 +1,4 @@
 pipeline {
-    agent any
-    tools {
-        dotnetsdk '.NET8'
-    }
     environment {
         BUILD_NAME = "jenkins-${env.JOB_NAME}-${env.BUILD_NUMBER}"
         LT_USERNAME = "vaneetb"
