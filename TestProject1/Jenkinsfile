@@ -33,12 +33,6 @@ pipeline {
                 sh '/usr/local/bin/dotnet build TestProject1.sln --configuration Release'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-               sh '/usr/local/bin/dotnet tool install --global Microsoft.Playwright.CLI'
-               sh 'export PATH=$PATH:$HOME/.dotnet/tools && playwright install'
-            }
-        }
         stage('Test') {
             steps {
                 withEnv(["LT_USERNAME=${env.LT_USERNAME}", "LT_ACCESS_KEY=${env.LT_ACCESS_KEY}", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
