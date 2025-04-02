@@ -35,7 +35,8 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'playwright install'
+               sh '/usr/local/bin/dotnet tool install --global Microsoft.Playwright.CLI'
+               sh 'export PATH=$PATH:$HOME/.dotnet/tools && playwright install'
             }
         }
         stage('Test') {
