@@ -33,7 +33,11 @@ pipeline {
         }
         stage('Test') {
             steps {
-                withEnv(["LT_USERNAME=$(printenv LT_USERNAME)", "LT_ACCESS_KEY=$(printenv LT_ACCESS_KEY)", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
+                withEnv([
+                    "LT_USERNAME=${sh(script: 'printenv LT_USERNAME', returnStdout: true).trim()}",
+                    "LT_ACCESS_KEY=${sh(script: 'printenv LT_ACCESS_KEY', returnStdout: true).trim()}",
+                    "LT_BUILD_NAME=${env.BUILD_NAME}"
+                ]) {
                     sh '/usr/local/bin/dotnet test TestProject1.sln'
                 }
             }
