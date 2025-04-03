@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         BUILD_NAME = "jenkins-${env.JOB_NAME}-${env.BUILD_NUMBER}"
-        LT_USERNAME = ''
-        LT_ACCESS_KEY = ''
+        LT_USERNAME = env.LT_USERNAME // Fetch from agent
+        LT_ACCESS_KEY = env.LT_ACCESS_KEY // Fetch from agent
         LT_BUILD_NAME = "${BUILD_NAME}"
     }
     stages {
