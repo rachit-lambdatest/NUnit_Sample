@@ -3,6 +3,7 @@ pipeline {
     environment {
         BUILD_NAME = "jenkins-${env.JOB_NAME}-${env.BUILD_NUMBER}"
         LT_BUILD_NAME = "${BUILD_NAME}"
+        LAMBDA_CREDS = credentials('lt-creds')
     }
     stages {
         stage('Cleanup Workspace') {
@@ -33,7 +34,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                withEnv(["LT_USERNAME=${env.LT_USERNAME}", "LT_ACCESS_KEY=${env.LT_ACCESS_KEY}", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
+                withEnv(["LT_USERNAME=${env.LAMBDA_CREDS_USR}", "LT_ACCESS_KEY=${env.LAMBDA_CREDS_PSW}", "LT_BUILD_NAME=${env.BUILD_NAME}"]) {
                     sh '/usr/local/bin/dotnet test TestProject1.sln'
                 }
             }
