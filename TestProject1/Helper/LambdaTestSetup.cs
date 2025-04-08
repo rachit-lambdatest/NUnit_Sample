@@ -25,13 +25,13 @@ public class LambdaTestSetup
 
         var capabilities = new Dictionary<string, object?>
         {
-            { "browserName", "pw-firefox" },
+            { "browserName", "pw-webkit" },
             { "browserVersion", "latest" },
             { "LT:Options", new Dictionary<string, string?>
                 {
                     { "name", testName },
                     { "build", buildName },
-                    { "platform", "Windows 10" },
+                    { "platform", "macOS Sonoma"},
                     { "user", user },
                     { "accessKey", accessKey }
                 }
